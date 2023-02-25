@@ -1,0 +1,24 @@
+﻿{
+  "name": "com.nsavelev.nbehaviourtree",
+  "version": "0.5.0",
+  "displayName": "NBehaviour",
+  "description": "Simple Behaviour tree",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "documentationUrl": "https://github.com/nSavelev/NBehaviourTree",
+  "changelogUrl": "https://github.com/nSavelev/NBehaviourTree",
+  "licensesUrl": "https://github.com/nSavelev/NBehaviourTree/blob/main/Assets/NBehaviourTree/LICENSE.txt",
+  "dependencies": {
+    "com.unity.modules.jsonserialize": "1.0.0"
+  },
+  "keywords": [
+    "keyword1",
+    "keyword2",
+    "keyword3"
+  ],
+  "author": {
+    "name": "nSavelev",
+    "email": "nickolai.savelev@gmail.com",
+    "url": "https://github.com/nSavelev"
+  }
+}

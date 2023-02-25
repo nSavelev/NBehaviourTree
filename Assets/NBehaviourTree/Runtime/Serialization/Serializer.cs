@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NBehaviourTree.Runtime.Compositors;
 using NBehaviourTree.Runtime.Decorators;
-using Newtonsoft.Json;
 using UnityEngine;
 
 namespace NBehaviourTree.Runtime.Serialization
