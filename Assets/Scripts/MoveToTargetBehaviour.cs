@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class MoveBehaviour : BaseLeafNode<TestSMData>
+    public class MoveToTargetBehaviour : BaseLeafNode<TestSMData>
     {
         [SerializeField]
         protected float _moveSpeed = 5f;

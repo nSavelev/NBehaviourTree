@@ -58,7 +58,10 @@ namespace NBehaviourTree.Runtime
                 _rootNode = string.Empty;
             if (!string.IsNullOrEmpty(node.Parent))
             {
-                _nodes[node.Parent].RemoveChild(node.ID);
+                if (_nodes.TryGetValue(node.Parent, out var parentNode))
+                {
+                    parentNode.RemoveChild(node.ID);
+                }
             }
 
             foreach (var leftNode in _nodes.Values)

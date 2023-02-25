@@ -12,6 +12,11 @@ namespace NBehaviourTree.Runtime
         [SerializeParam]
         public string Child;
 
+        protected BehaviourStatus RunChild()
+        {
+            return StateMachine.RunNode(Child);
+        }
+
         public override void RemoveChild(string nodeID)
         {
             if (HasInChilds(nodeID))

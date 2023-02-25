@@ -17,6 +17,7 @@ namespace NBehaviourTree.Editor.StateMachineEditor
         private readonly EditorData _data;
         private readonly BaseNode _node;
         private readonly NBehaviorEditorWindow _window;
+        private bool _click;
 
         private Rect Rect
         {
@@ -110,6 +111,11 @@ namespace NBehaviourTree.Editor.StateMachineEditor
                 case EventType.MouseDown:
                     if (evnt.button == 0)
                     {
+                        if (Rect.Contains(evnt.mousePosition))
+                        {
+                            _click = true;
+                        }
+
                         if (InRect.Contains(evnt.mousePosition))
                         {
                             _window.BeginConnection(null, _node.ID);
@@ -137,6 +143,15 @@ namespace NBehaviourTree.Editor.StateMachineEditor
                     }
                     break;
                 case EventType.MouseUp:
+                    if (evnt.button == 0 && _click)
+                    {
+                        if (Rect.Contains(evnt.mousePosition))
+                        {
+                            _click = false;
+                            _window.NodeClicked(this);
+                            evnt.Use();
+                        }
+                    }
                     if (_window.ConnectionDraw != null)
                     {
                         if (InRect.Contains(evnt.mousePosition) && evnt.button == 0 && !_isDragged)
@@ -174,6 +189,7 @@ namespace NBehaviourTree.Editor.StateMachineEditor
                     }
                     break;
                 case EventType.MouseDrag:
+                    _click = false;
                     if (_isDragged)
                     {
                         Drag(evnt.delta);

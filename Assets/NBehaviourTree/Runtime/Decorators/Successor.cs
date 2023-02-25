@@ -8,7 +8,7 @@
 
         protected override BehaviourStatus OnRun()
         {
-            StateMachine.RunNode(Child);
+            RunChild();
             return BehaviourStatus.Success;
         }
     }

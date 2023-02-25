@@ -20,6 +20,7 @@ namespace DefaultNamespace
                 return BehaviourStatus.Failure;
             }
 
+            return BehaviourStatus.Success;
             return Vector3.Angle(Data.Forward, Data.TargetPosition - Data.Position) > 0.2f
                 ? BehaviourStatus.Running
                 : BehaviourStatus.Success;

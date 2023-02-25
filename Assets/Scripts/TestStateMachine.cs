@@ -28,7 +28,7 @@ namespace DefaultNamespace
         private Transform _target;
         
         private TestSMData _data;
-        protected override Type[] StateTypes => new[] { typeof(MoveBehaviour), typeof(RotateBehaviour) };
+        protected override Type[] StateTypes => new[] { typeof(MoveToTargetBehaviour), typeof(RotateBehaviour), typeof(DistanceCheck), typeof(LookCheck), typeof(MoveForwardBehaviour), typeof(DebugNode) };
         protected override TestSMData Data => _data;
         protected override void OnInit()
         {

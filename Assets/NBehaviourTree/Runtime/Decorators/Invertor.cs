@@ -8,7 +8,7 @@
 
         protected override BehaviourStatus OnRun()
         {
-            var childStatus = StateMachine.RunNode(Child);
+            var childStatus = RunChild();
             if (childStatus == BehaviourStatus.Failure)
                 return BehaviourStatus.Success;
             if (childStatus == BehaviourStatus.Success)

@@ -16,7 +16,8 @@ namespace NBehaviourTree.Runtime.Serialization
             [typeof(Sequence).FullName] = typeof(Sequence),
             [typeof(Invertor).FullName] = typeof(Invertor),
             [typeof(RepeatUntilFail).FullName] = typeof(RepeatUntilFail),
-            [typeof(Successor).FullName] = typeof(Successor)
+            [typeof(Successor).FullName] = typeof(Successor),
+            [typeof(Parallel).FullName] = typeof(Parallel),
         };
         
         [Serializable]

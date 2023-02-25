@@ -24,6 +24,9 @@ namespace NBehaviourTree.Editor.StateMachineEditor
 
         internal Dictionary<string, Node> _nodes = new Dictionary<string, Node>();
         private Dictionary<string, Type> _nodeTypes = new Dictionary<string, Type>();
+        private ObjectDataDrawer _selectedNodeDrawer;
+        [SerializeField]
+        private Rect _selectedRect = new Rect(10,50, 300, 100);
 
         [MenuItem("Assets/NBehaviourTree/Create")]
         public static void CreateNewTree()
@@ -98,13 +101,21 @@ namespace NBehaviourTree.Editor.StateMachineEditor
         void OnGUI()
         {
             DrawWorkingArea();
-            DrawMenu();
             ProcessNodeEvents(Event.current);
             ProcessEvent(Event.current);
             DrawCurrentConnection(Event.current);
             DrawNodesConnections();
+            DrawMenu();
+            DrawNodeEdit();
             if (GUI.changed)
                 Repaint();
+        }
+
+        private void DrawNodeEdit()
+        {
+            if (_selectedNodeDrawer == null)
+                return;
+            _selectedNodeDrawer.Draw(ref _selectedRect);
         }
 
         private void DrawNodesConnections()
@@ -206,6 +217,13 @@ namespace NBehaviourTree.Editor.StateMachineEditor
                     {
                         ProcessContextMenu(evnt.mousePosition);
                     }
+                    if (evnt.button == 0)
+                    {
+                        if (_selectedNodeDrawer == null || !_selectedRect.Contains(evnt.mousePosition))
+                        {
+                            _selectedNodeDrawer = null;
+                        }
+                    }
                     break;
                 case EventType.MouseDrag:
                     if (evnt.button == 2)
@@ -303,6 +321,11 @@ namespace NBehaviourTree.Editor.StateMachineEditor
             }
             _stateMachine.SetAsChildren(_stateMachine.Nodes[from], _stateMachine.Nodes[to], ConnectionDraw.FromIndex);
             ConnectionDraw = null;
+        }
+
+        public void NodeClicked(Node node)
+        {
+            _selectedNodeDrawer = new ObjectDataDrawer(node.StateNode);
         }
     }
 }
